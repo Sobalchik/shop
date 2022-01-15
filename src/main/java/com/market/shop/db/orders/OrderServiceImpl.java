@@ -2,9 +2,6 @@ package com.market.shop.db.orders;
 
 import com.market.shop.db.OrderStatus;
 import com.market.shop.db.goods.CakeRepository;
-import com.market.shop.db.orders.OrderEntity;
-import com.market.shop.db.orders.OrderRepository;
-import com.market.shop.db.orders.OrderService;
 import com.market.shop.db.payment.PaymentEntity;
 import com.market.shop.db.purchase.PurchaseEntity;
 import com.market.shop.db.purchase.PurchaseRepository;
@@ -48,22 +45,12 @@ public class OrderServiceImpl implements OrderService {
         orderEntity.setDeliveryTime(order.getDeliveryTime());
         PaymentEntity paymentEntity = new PaymentEntity();
 
-        //paymentEntity.setPaymentDate(order.getPayment().getPaymentDate());
         paymentEntity.setAmount(0.0);
         paymentEntity.setStatus(order.getPayment().getStatus());
         paymentEntity.setOrder(orderEntity);
         orderEntity.setPayment(paymentEntity);
 
         orderEntity.setOrderStatus(OrderStatus.NEW);
-
-        /*orderEntity.setPurchases(order.getPurchases().stream()
-                .map(purchase -> {
-                    PurchaseEntity purchaseEntity = new PurchaseEntity();
-                    purchaseEntity.setCount(purchase.getCount());
-                    purchaseEntity.setOrder(orderEntity);
-                    purchaseEntity.setCake(cakeRepository.findById(purchase.getCakeId()).orElseThrow(RuntimeException::new));
-                    return purchaseEntity;
-                }).collect(Collectors.toList()));*/
         List<PurchaseEntity> l= new ArrayList<>();
         orderEntity.setPurchases(l);
         orderEntity.setUser(userRepository.findUserEntityByNumber(order.getUser().getNumber()));
@@ -118,7 +105,7 @@ public class OrderServiceImpl implements OrderService {
     @Override
     public void changeOrderStatus(Long id, OrderStatus orderStatus) throws OrderNotFoundException {
         if(!orderRepository.existsById(id)) {
-            throw new OrderNotFoundException("Order with ID "+id+ " doesn't exist");
+            throw new OrderNotFoundException("There is no order with"+id);
         }
         else  {
             OrderEntity orderEntity = orderRepository.getById(id);
@@ -130,7 +117,7 @@ public class OrderServiceImpl implements OrderService {
     @Override
     public void addPurchaseInList(Long id, Purchase newpurchase) throws OrderNotFoundException {
         if(!orderRepository.existsById(id)) {
-            throw new OrderNotFoundException("Order with ID "+id+ " doesn't exist");
+            throw new OrderNotFoundException("There is no order with"+id);
         }
         else  {
             OrderEntity orderEntity = orderRepository.getById(id);
@@ -160,7 +147,7 @@ public class OrderServiceImpl implements OrderService {
     @Override
     public void deletePurchaseInList(Long id, Purchase newpurchase) throws OrderNotFoundException {
         if(!orderRepository.existsById(id)) {
-            throw new OrderNotFoundException("Order with ID "+id+ " doesn't exist");
+            throw new OrderNotFoundException("There is no order with"+id);
         }
         else  {
             OrderEntity orderEntity = orderRepository.getById(id);
@@ -172,10 +159,10 @@ public class OrderServiceImpl implements OrderService {
     }
 
     @Override
-    public void deleteOrder(Long el) throws OrderNotFoundException {
-        if(!orderRepository.existsById(el)) {
-            throw new OrderNotFoundException("Order with ID "+el+ " doesn't exist");
+    public void deleteOrder(Long id) throws OrderNotFoundException {
+        if(!orderRepository.existsById(id)) {
+            throw new OrderNotFoundException("There is no order with"+id);
         }
-        else orderRepository.deleteById(el);
+        else orderRepository.deleteById(id);
     }
 }

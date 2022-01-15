@@ -16,7 +16,7 @@ public class PaymentServiceImpl implements PaymentService {
     @Override
     public void changePaymentStatus(Long id, PaymentStatus paymentStatus) throws PaymentNotFoundException {
         if(!paymentRepository.existsById(id)) {
-            throw new PaymentNotFoundException("Payment with ID "+id+ " doesn't exist");
+            throw new PaymentNotFoundException("There is no payment with"+id);
         }
         else  {
             PaymentEntity paymentEntity = paymentRepository.getById(id);

@@ -32,7 +32,6 @@
             <th>(updateStatus)</th>
             <th></th>
             <th>(cakeId, count)</th>
-            <th>(cakeId)</th>
         </tr>
         </thead>
         <tbody th:each="order : ${orders}">
@@ -78,12 +77,6 @@
                     <input style="width:40px" height="10px" type="text"  th:field="*{cakeId}">
                     <input style="width:40px" height="10px" type="text"  th:field="*{count}">
                     <button type="submit">add</button>
-                </form>
-            </td>
-            <td>
-                <form th:action="@{/admin/deletePurchaseInList/{id} (id=${order.getId()})}" th:object="${purchase}" th:method="post">
-                    <input style="width:40px" height="10px" type="text"  th:field="*{cakeId}">
-                    <button type="submit">delete</button>
                 </form>
             </td>
         </tr>
