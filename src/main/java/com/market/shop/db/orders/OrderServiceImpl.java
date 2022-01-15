@@ -115,55 +115,6 @@ public class OrderServiceImpl implements OrderService {
         orders.setOrderList(orderList);
         return orders;
     }
-
-    @Override
-    public Orders getOrder(String number) throws OrderNotFoundException {
-        if (!orderRepository.existsByUser_Number(number))
-            throw new OrderNotFoundException("Order with USER NUMBER "+number+ " doesn't exist");
-        else {
-            List<OrderEntity> orderEntityList = orderRepository.findOrderEntitiesByUser_Number(number);
-            List<Order> orderList = orderEntityList.stream().map(c -> {
-                Order order = new Order();
-                order.setId(c.getId());
-
-                UserEntity userEntity = c.getUser();
-                User user = new User();
-                user.setName(userEntity.getName());
-                user.setNumber(userEntity.getNumber());
-                order.setUser(user);
-
-                order.setDelivery(c.getDelivery());
-                order.setDeliveryAddress(c.getDeliveryAddress());
-                order.setDeliveryTime(c.getDeliveryTime());
-                order.setOrderStatus(c.getOrderStatus());
-
-                order.setPurchases(c.getPurchases().stream()
-                        .map(purchaseEntity -> {
-                            Purchase purchase = new Purchase();
-                            purchase.setCount(purchaseEntity.getCount());
-                            purchase.setCakeId(purchaseEntity.getCake().getId());
-                            return purchase;
-                        }).collect(Collectors.toList()));
-
-                Double amount = 0.0;
-                for (Purchase el : order.getPurchases()) {
-                    amount += el.getCount() * cakeRepository.findCakeEntityById(el.getCakeId()).getPrice();
-                }
-
-                PaymentEntity paymentEntity = c.getPayment();
-                Payment payment = new Payment();
-                payment.setStatus(paymentEntity.getStatus());
-                payment.setAmount(amount);
-                order.setPayment(payment);
-
-                return order;
-            }).collect(Collectors.toList());
-            Orders orders = new Orders();
-            orders.setOrderList(orderList);
-            return orders;
-        }
-    }
-
     @Override
     public void changeOrderStatus(Long id, OrderStatus orderStatus) throws OrderNotFoundException {
         if(!orderRepository.existsById(id)) {
@@ -219,27 +170,6 @@ public class OrderServiceImpl implements OrderService {
             }
         }
     }
-
-   /* @Override
-    public void deletePurchaseInList(Long id, Purchase newpurchase) throws OrderNotFoundException {
-        if(!orderRepository.existsById(id)) {
-            throw new OrderNotFoundException("Order with ID "+id+ " doesn't exist");
-        }
-        else  {
-            int index=-1;
-            OrderEntity orderEntity = orderRepository.getById(id);
-            for (PurchaseEntity el: orderEntity.getPurchases()){
-                index++;
-                if (el.getCake().getId().equals(newpurchase.getCakeId())) {
-                    List <PurchaseEntity> purchaseEntityListList = orderEntity.getPurchases();
-                    purchaseEntityListList.remove(index);
-                    orderEntity.setPurchases(purchaseEntityListList);
-                    orderRepository.saveAndFlush(orderEntity);
-                    return;
-                }
-            }
-        }
-    }*/
 
     @Override
     public void deleteOrder(Long el) throws OrderNotFoundException {

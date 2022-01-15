@@ -13,5 +13,4 @@ public interface OrderService {
     void deletePurchaseInList (Long id, Purchase purchase) throws OrderNotFoundException;
     void deleteOrder (Long id) throws OrderNotFoundException;
     Orders getOrders();
-    Orders getOrder (String number) throws OrderNotFoundException;
 }

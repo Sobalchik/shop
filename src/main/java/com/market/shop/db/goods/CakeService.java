@@ -6,7 +6,6 @@ import com.market.shop.rest.dto.cake.Cakes;
 
 public interface CakeService {
     Cakes getCakes();
-    Cake getCake(Long id) throws CakeNotFoundException;
     void addCake(Cake cake);
     void deleteCake (Long id) throws CakeNotFoundException;
 }

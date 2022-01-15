@@ -12,12 +12,4 @@ public class PurchaseServiceImpl implements PurchaseService{
     @Autowired
     public PurchaseServiceImpl (PurchaseRepository purchaseRepository) {this.purchaseRepository=purchaseRepository;}
 
-    @Override
-    public void addPurchase(OrderEntity orderEntity, CakeEntity cakeEntity, Integer count) {
-        PurchaseEntity purchase = new PurchaseEntity();
-        purchase.setCount(count);
-        purchase.setOrder(orderEntity);
-        purchase.setCake(cakeEntity);
-        purchaseRepository.saveAndFlush(purchase);
-    }
 }

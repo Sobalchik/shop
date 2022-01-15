@@ -37,24 +37,6 @@ public class CakeServiceImpl implements CakeService {
     }
 
     @Override
-    public Cake getCake(Long id) throws CakeNotFoundException {
-        CakeEntity cakeEntity = cakeRepository.findAll().stream()
-                .filter(c -> c.getId().equals(id))
-                .findFirst()
-                .orElseThrow(() -> new CakeNotFoundException("There is no cake with id = "+id));
-
-        Cake cake = new Cake();
-        cake.setId(cakeEntity.getId());
-        cake.setName(cakeEntity.getName());
-        cake.setImage(cakeEntity.getImage());
-        cake.setPrice(cakeEntity.getPrice());
-        cake.setWeight(cakeEntity.getWeight());
-        cake.setCalories(cakeEntity.getCalories());
-        return cake;
-    }
-
-
-    @Override
     public void addCake(Cake cake) {
         CakeEntity cakeEntity = new CakeEntity();
         cakeEntity.setName(cake.getName());
