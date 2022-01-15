@@ -8,7 +8,7 @@ import com.market.shop.exeption.CakeNotFoundException;
 import com.market.shop.exeption.OrderNotFoundException;
 import com.market.shop.exeption.PaymentNotFoundException;
 import com.market.shop.exeption.UserExistException;
-import com.market.shop.rest.dto.Who;
+
 import com.market.shop.rest.dto.cake.Cake;
 import com.market.shop.rest.dto.order.Order;
 import com.market.shop.rest.dto.order.Payment;
@@ -41,9 +41,7 @@ public class AdminController {
     }
 
     @GetMapping(value="home")
-    public String home(org.springframework.ui.Model model, Principal principal){
-        Who who = new Who(principal.getName());
-        model.addAttribute("who", who);
+    public String home(){
         return "home";
     }
 

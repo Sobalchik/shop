@@ -1,0 +1,30 @@
+.wrapper {
+    display: flex;
+    overflow: hidden;
+    height: 125vh;
+}
+
+/* SIDEBAR */
+.sidebar {
+    display: block;
+    width: 400px;
+    background: #383838;
+}
+
+.sidebar-add{
+    position: absolute;
+    top: 100px;
+    left:50px;
+}
+
+.allBlock{
+    position: absolute;
+    font-size: large;
+    top: 100px;
+    left: 300px;
+}
+.deleteBlock{
+    position: absolute;
+    top: 650px;
+    left: 50px;
+}

@@ -3,103 +3,262 @@
 <html xmlns:th="http://www.thymeleaf.org">
 
 <head>
-    <title>Cakes</title>
+    <title>CAKES</title>
+    <link rel="stylesheet" href="style.css">
     <style>
-        .addBlock{
+        .wrapper {
+            display: flex;
+            overflow: hidden;
+            height: 125vh;
+        }
+
+        /* SIDEBAR */
+        .sidebar {
+            display: block;
+            width: 400px;
+            background: #383838;
+        }
+
+        .sidebar-add{
             position: absolute;
             top: 100px;
             left:50px;
         }
-        .allBlock{
-            position: absolute;
-            font-size: large;
-            top: 100px;
-            left: 300px;
+
+
+        .container {
+            display: flex;
+            flex-direction: column;
+            flex: 1;
         }
-        .deleteBlock{
+        .header {
+            height: 100px;
+            background: #fff;
+            box-shadow: 0 4px 4px rgba(0, 0, 0, 0.05);
+        }
+
+        .header-menu
+        {
+            display: flex;
             position: absolute;
-            top: 650px;
-            left: 50px;
+            margin: 26px 51px 21px 43px;
+            width: 1173px;
+            height: 41px;
+        }
+        .header-menu-request {
+            height: 40px;
+            width: 836px;
+            display: flex;
+            border-bottom: 1px solid rgba(196, 196, 196, 1);
+        }
+        .header-menu-request-image{
+            width: 24px;
+            height: 24px;
+            margin: 10px 15px 17px 3px;
+        }
+        .header-menu-request-words{
+
+            width: 492px;
+            height: 40px;
+
+            position: relative;
+            font-family: 'Open Sans', sans-serif;
+            font-style: normal;
+            font-weight: normal;
+            font-size: 18px;
+            line-height: 40px;
+
+            color: #999999;
+
+        }
+
+        .header-request-find{
+            width: 89px;
+            height: 40px;
+            background: #E7A04E;
+            border-radius: 7px;
+            font-family: 'Open Sans', sans-serif;
+
+            font-weight: bold;
+            font-size: 12px;
+            line-height: 40px;
+
+            text-align: center;
+            text-transform: uppercase;
+
+            margin-left: 15px;
+            color: #FFFFFF;
+        }
+
+        .header-request-home{
+            width: 89px;
+            height: 40px;
+            background: #4ee75d;
+            border-radius: 7px;
+            font-family: 'Open Sans', sans-serif;
+
+            font-weight: bold;
+            font-size: 12px;
+            line-height: 40px;
+
+            text-align: center;
+            text-transform: uppercase;
+
+            margin-left: 30px;
+            color: #FFFFFF;
+        }
+
+        .header-request-add{
+            width: 158px;
+            height: 40px;
+            background: #4EE7B0;
+            border-radius: 7px;
+            font-family: 'Open Sans', sans-serif;
+
+            font-weight: bold;
+            font-size: 12px;
+            line-height: 40px;
+
+            text-decoration: none;
+            text-align: center;
+            text-transform: uppercase;
+            margin-top: 10px;
+        }
+        .header-request-delete {
+            width: 158px;
+            height: 40px;
+            background: #e74e4e;
+            border-radius: 7px;
+            font-family: 'Open Sans', sans-serif;
+
+            font-weight: bold;
+            font-size: 12px;
+            line-height: 40px;
+
+            text-decoration: none;
+            text-align: center;
+            text-transform: uppercase;
+            margin-top: 10px;
+        }
+        .header-request-add-link{
+            text-decoration: none;
+            color: #FFFFFF;
+        }
+        /* CONTENT */
+        .content {
+            flex: 1;
+            overflow: auto;
+            background: #CCCCCC;
+        }
+        .cake-information{
+            position: relative;
+            font-size: large;
+        }
+        .delete-button{
+            position: relative;
         }
     </style>
 </head>
 
 <body>
-<div style="text-align: center; font-size: xxx-large">CAKES</div>
-<div style="text-align: right"><a href="home">home</a></div>
-<div class="addBlock">
-    <form th:action="@{/admin/addCake}" th:object="${cake}" th:method="post">
-        <fieldset>
-            <p>Name:</p>
-            <p> <input type="text" th:field="*{name}"></p>
-        </fieldset>
-        <fieldset>
-            <p>Calories:</p>
-            <p> <input type="number" step="25" th:field="*{calories}"></p>
-        </fieldset>
-        <fieldset>
-            <p>Prise:</p>
-            <p> <input type="number" step="25" th:field="*{price}"></p>
-        </fieldset>
-        <fieldset>
-            <p>Weight:</p>
-            <p> <input type="number" step="25" th:field="*{weight}"></p>
-        </fieldset>
-        <fieldset>
-            <p>Image:</p>
-            <p><input type="text" th:field="*{image}"></p>
-        </fieldset>
-
-        <button style="height:20px;width:205px" type="submit">add</button>
-
-    </form>
+<div class="wrapper">
+    <div class="sidebar">
+        <div style="text-align: center; width: 30px; height: 30px; margin-bottom: 10px; color: white">CAKES</div>
+        <div class="sidebar-add">
+            <form th:action="@{/admin/addCake}" th:object="${cake}" th:method="post">
+                <fieldset>
+                    <p  style="
+                        color: white">Name:</p>
+                    <p> <input type="text" th:field="*{name}"></p>
+                </fieldset>
+                <fieldset>
+                    <p  style="
+                        color: white">Calories:</p>
+                    <p> <input type="number" step="25" th:field="*{calories}"></p>
+                </fieldset>
+                <fieldset>
+                    <p  style="
+                        color: white">Price:</p>
+                    <p> <input type="number" step="25" th:field="*{price}"></p>
+                </fieldset>
+                <fieldset>
+                    <p  style="
+                        color: white">Weight:</p>
+                    <p> <input type="number" step="25" th:field="*{weight}"></p>
+                </fieldset>
+                <fieldset>
+                    <p  style=" color: white">Image:</p>
+                    <p><input type="text" th:field="*{image}"></p>
+                </fieldset>
+                <div class="header-request-add">
+                    <button style=" text-decoration: none;
+            color: #0c0b0b;" type="submit">Добавить тортик</button>
+                </div>
+            </form>
+        </div>
+    </div>
+    <div class ="container">
+        <div class="header">
+            <div class="header-menu">
+                <div class="header-menu-request">
+                    <div class="header-menu-request-image" style="background-image: url(/static/search.png)"></div>
+                    <div class="header-menu-request-words">Поиск по тортикам...</div>
+                </div>
+                <div class="header-request-find">Искать</div>
+                <div class="header-request-home"><a href="home">HOME</a></div>
+            </div>
+        </div>
+        <div class="content">
+            <div class="cake-information">
+                <table>
+                    <thead>
+                    <tr>
+                        <th>ID</th>
+                        <th>Name</th>
+                        <th>Calories</th>
+                        <th>Price</th>
+                        <th>Weight</th>
+                        <th>Image</th>
+                    </tr>
+                    </thead>
+                    <tbody th:each="cake, iStat : ${cakes}">
+                    <tr>
+                        <td th:text="${cake.getId()}"></td>
+                        <td th:text="${cake.getName()}"></td>
+                        <td th:text="${cake.getCalories()}"></td>
+                        <td th:text="${cake.getPrice()}"></td>
+                        <td th:text="${cake.getWeight()}"></td>
+                        <td th:text="${cake.getImage()}"></td>
+                    </tr>
+                    </tbody>
+                </table>
+                <br/>
+                <br/>
+            </div>
+            <div class="delete-button">
+                <form th:action="@{/admin/deleteCake}" th:object="${cake}" th:method="post">
+                    <table>
+                        <thead>
+                        <tr>
+                            <th>ID</th>
+                            <th></th>
+                        </tr>
+                        </thead>
+                        <td>
+                            <input style="height:15px;width:137px" type="number" th:field="*{id}">
+                        </td>
+                        <td>
+                            <div class="header-request-delete">
+                                <button style=" text-decoration: none;
+            color: #0c0b0b;" type="submit">Удалить тортик</button>
+                            </div>
+                        </td>
+                        </tr>
+                    </table>
+                </form>
+            </div>
+        </div>
+    </div>
 </div>
-
-<div class="allBlock">
-    <table>
-        <thead>
-        <tr>
-            <th>ID</th>
-            <th>Name</th>
-            <th>Calories</th>
-            <th>Price</th>
-            <th>Weight</th>
-            <th>Image</th>
-        </tr>
-        </thead>
-        <tbody th:each="cake, iStat : ${cakes}">
-        <tr>
-            <td th:text="${cake.getId()}"></td>
-            <td th:text="${cake.getName()}"></td>
-            <td th:text="${cake.getCalories()}"></td>
-            <td th:text="${cake.getPrice()}"></td>
-            <td th:text="${cake.getWeight()}"></td>
-            <td th:text="${cake.getImage()}"></td>
-        </tr>
-        </tbody>
-    </table>
-    <br/>
-    <br/>
-</div>
-<div class="deleteBlock">
-    <form th:action="@{/admin/deleteCake}" th:object="${cake}" th:method="post">
-        <table>
-            <thead>
-            <tr>
-                <th>ID</th>
-                <th></th>
-            </tr>
-            </thead>
-            <td>
-                <input style="height:15px;width:137px" type="number" th:field="*{id}">
-            </td>
-            <td>
-                <button type="submit">delete</button>
-            </td>
-            </tr>
-        </table>
-    </form>
-</div>
-
 </body>
 </html>
