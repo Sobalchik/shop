@@ -32,22 +32,22 @@ public class Order {
     private Payment payment;
 
     @NotNull
-    @Schema(description = "do you need delivery?", required = true)
+    @Schema(description = "delivery", required = true)
     @JsonProperty("delivery")
     private Delivery delivery;
 
     @NotNull
-    @Schema(description = "Delivery address", required = true)
+    @Schema(description = "delivery address", required = true)
     @JsonProperty("deliveryAddress")
     private String deliveryAddress;
 
     @NotNull
-    @Schema(description = "Delivery time", required = true)
+    @Schema(description = "delivery time", required = true)
     @JsonProperty("deliveryTime")
     private String deliveryTime;
 
     @Null
-    @Schema(description = "Order status", required = true)
+    @Schema(description = "order status", required = true)
     @JsonProperty("orderStatus")
     private OrderStatus orderStatus;
 

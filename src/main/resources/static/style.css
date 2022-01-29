@@ -1,0 +1,151 @@
+.wrapper {
+    display: flex;
+    overflow: hidden;
+    height: 125vh;
+}
+
+/* SIDEBAR */
+.sidebar {
+    display: block;
+    width: 400px;
+    background: #383838;
+}
+
+.sidebar-add{
+    position: absolute;
+    top: 100px;
+    left:50px;
+}
+
+
+.container {
+    display: flex;
+    flex-direction: column;
+    flex: 1;
+}
+.header {
+    height: 100px;
+    background: #fff;
+    box-shadow: 0 4px 4px rgba(0, 0, 0, 0.05);
+}
+
+.header-menu
+{
+    display: flex;
+    position: absolute;
+    margin: 26px 51px 21px 43px;
+    width: 1173px;
+    height: 41px;
+}
+.header-menu-request {
+    height: 40px;
+    width: 836px;
+    display: flex;
+    border-bottom: 1px solid rgba(196, 196, 196, 1);
+}
+.header-menu-request-image{
+    width: 24px;
+    height: 24px;
+    margin: 10px 15px 17px 3px;
+}
+.header-menu-request-words{
+
+    width: 492px;
+    height: 40px;
+
+    position: relative;
+    font-family: 'Open Sans', sans-serif;
+    font-style: normal;
+    font-weight: normal;
+    font-size: 18px;
+    line-height: 40px;
+
+    color: #999999;
+
+}
+
+.header-request-find{
+    width: 89px;
+    height: 40px;
+    background: #E7A04E;
+    border-radius: 7px;
+    font-family: 'Open Sans', sans-serif;
+
+    font-weight: bold;
+    font-size: 12px;
+    line-height: 40px;
+
+    text-align: center;
+    text-transform: uppercase;
+
+    margin-left: 15px;
+    color: #FFFFFF;
+}
+
+.header-request-home{
+    width: 89px;
+    height: 40px;
+    background: #4ee75d;
+    border-radius: 7px;
+    font-family: 'Open Sans', sans-serif;
+
+    font-weight: bold;
+    font-size: 12px;
+    line-height: 40px;
+
+    text-align: center;
+    text-transform: uppercase;
+
+    margin-left: 30px;
+    color: #FFFFFF;
+}
+
+.header-request-add{
+    width: 158px;
+    height: 40px;
+    background: #4EE7B0;
+    border-radius: 7px;
+    font-family: 'Open Sans', sans-serif;
+
+    font-weight: bold;
+    font-size: 12px;
+    line-height: 40px;
+
+    text-decoration: none;
+    text-align: center;
+    text-transform: uppercase;
+    margin-top: 10px;
+}
+.header-request-delete {
+    width: 158px;
+    height: 40px;
+    background: #e74e4e;
+    border-radius: 7px;
+    font-family: 'Open Sans', sans-serif;
+
+    font-weight: bold;
+    font-size: 12px;
+    line-height: 40px;
+
+    text-decoration: none;
+    text-align: center;
+    text-transform: uppercase;
+    margin-top: 10px;
+}
+.header-request-add-link{
+    text-decoration: none;
+    color: #FFFFFF;
+}
+/* CONTENT */
+.content {
+    flex: 1;
+    overflow: auto;
+    background: #CCCCCC;
+}
+.cake-information{
+    position: relative;
+    font-size: large;
+}
+.delete-button{
+    position: relative;
+}

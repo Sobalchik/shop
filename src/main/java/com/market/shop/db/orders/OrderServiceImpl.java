@@ -84,7 +84,7 @@ public class OrderServiceImpl implements OrderService {
                         return purchase;
                     }).collect(Collectors.toList()));
 
-            Double amount=0.0;
+            double amount=0.0;
             for (Purchase el: order.getPurchases()){
                 amount+=el.getCount()*cakeRepository.findCakeEntityById(el.getCakeId()).getPrice();
             }
@@ -140,20 +140,6 @@ public class OrderServiceImpl implements OrderService {
 
                 orderEntity.getPurchases().add(purchaseEntity);
                 orderRepository.saveAndFlush(orderEntity);
-            }
-        }
-    }
-
-    @Override
-    public void deletePurchaseInList(Long id, Purchase newpurchase) throws OrderNotFoundException {
-        if(!orderRepository.existsById(id)) {
-            throw new OrderNotFoundException("There is no order with"+id);
-        }
-        else  {
-            OrderEntity orderEntity = orderRepository.getById(id);
-            for (PurchaseEntity el: orderEntity.getPurchases()){
-                if (el.getCake().getId().equals(newpurchase.getCakeId()))
-                    purchaseRepository.deleteById(el.getId());
             }
         }
     }

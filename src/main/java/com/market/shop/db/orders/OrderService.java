@@ -10,7 +10,7 @@ public interface OrderService {
     void addOrder(Order order);
     void changeOrderStatus (Long id, OrderStatus orderStatus) throws OrderNotFoundException;
     void addPurchaseInList (Long id, Purchase purchase) throws OrderNotFoundException;
-    void deletePurchaseInList (Long id, Purchase purchase) throws OrderNotFoundException;
+ //   void deletePurchaseInList (Long id, Purchase purchase) throws OrderNotFoundException;
     void deleteOrder (Long id) throws OrderNotFoundException;
     Orders getOrders();
 }

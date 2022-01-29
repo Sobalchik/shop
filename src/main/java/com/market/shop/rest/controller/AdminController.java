@@ -131,15 +131,15 @@ public class AdminController {
         return "redirect:/admin/orders";
     }
 
-    @PostMapping(value = "deletePurchaseInList/{id}")
-    public String deletePurchaseInList(@PathVariable Long id, Purchase purchase){
-        try {
-            orderService.deletePurchaseInList(id, purchase);
-        }
-        catch (OrderNotFoundException ignored){
-        }
-        return "redirect:/admin/orders";
-    }
+//    @PostMapping(value = "deletePurchaseInList/{id}")
+//    public String deletePurchaseInList(@PathVariable Long id, Purchase purchase){
+//        try {
+//            orderService.deletePurchaseInList(id, purchase);
+//        }
+//        catch (OrderNotFoundException ignored){
+//        }
+//        return "redirect:/admin/orders";
+//    }
 
     @PostMapping(value = "deleteOrder/{id}")
     public String deleteOrder(@PathVariable Long id){

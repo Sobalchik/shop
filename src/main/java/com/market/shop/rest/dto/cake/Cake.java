@@ -8,6 +8,8 @@ import org.springframework.validation.annotation.Validated;
 import javax.validation.constraints.NotNull;
 import javax.validation.constraints.Null;
 import java.math.BigDecimal;
+import java.util.Calendar;
+import java.util.Date;
 
 @Data
 @Schema(description = "Short info about cakes" )
@@ -43,5 +45,8 @@ public class Cake {
     @Schema(description = "Weight", required = true)
     @JsonProperty("weight")
     private BigDecimal weight;
+
+    Calendar c;
+    Date d;
 
 }
